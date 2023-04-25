@@ -1,7 +1,7 @@
 ## Equity Score V1.0.0
 
 #### How to use:
-  1. Download release 
+  1. Download repository ( good tutorial : https://blog.hubspot.com/website/download-from-github) 
   2. Unzip folder
   3. Open Main.py and start the program (will require a coding editor such as Visual Studio or Eclipse)
   4. Enter inputs as requested
