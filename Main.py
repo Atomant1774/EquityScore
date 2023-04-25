@@ -15,7 +15,6 @@ IDEAS:
 import ESGUI as g
 import Census_Data_Puller as cdp
 
-#Allo!
 
 #Main var storage
 ds = {}
