@@ -11,3 +11,6 @@
   * Only works with Zip Codes and Census Tracts
   * Only two variables currently work: Poverty and Population for the American Community Survey
     * *Adding more variables is the plan for the next release*
+
+#### Notes:
+  * If there are any issues please add them to the issues list
