@@ -1,5 +1,6 @@
 Factor,Variable,By,Code
 All,Population,,B01001_001E
+Economic,Poverty,,B06012_002E
 Transportation,ANV,All,B08015_001E
 ,,Male ,B08015_002E
 ,,Female,B08015_003E

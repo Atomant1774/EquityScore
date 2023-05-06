@@ -30,9 +30,11 @@ def main():
     if ds['gtype'] == 'Zip Code':
         url = cdp.link_creation_zip_code(ds)
         cdp.data_processing(url,ds)
-        a = ds['variables_n']
+        var = list(ds['variables'].keys())
+        a = var[0:(ds['length'])]
         b = ds['zip_code']
-        c = ds['result']
+        result = ds['result']
+        c = result[0:(ds['length'])]
         answer = f"The total {a} in Zip Code {b} is {c}"
         print(answer)
         g.GUI_Result(answer)
@@ -41,11 +43,13 @@ def main():
         cdp.geography(ds)
         url = cdp.link_creation_tract(ds)
         cdp.data_processing(url,ds)
-        a = ds['variables_n']
+        var = list(ds['variables'].keys())
+        a = var[0:(ds['length'])]
         b = ds['tract']
         c = ds['county_n']
         d = ds['state_n']
-        e = ds['result']
+        result = ds['result']
+        e = result[0:(ds['length'])]
         answer = f"The total {a} in tract {b}, {c} County, {d} is {e}."
         g.GUI_Result(answer)
 

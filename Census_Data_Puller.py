@@ -32,9 +32,6 @@ IDEAS:
 import requests
 import csv
 
-#Variable Lookup
-variable_dict = {"Population" : 'B01001_001E', 'Poverty' : 'B06012_002E'}
-
 
 #=================================================================================================================================================#
 #                                                                                                                                                 #
@@ -48,18 +45,20 @@ def data(ds):
     Returns dictionary containing: data[specific dataset], acs_type[1 or 5 year estimate], year[data collection year], variables_n[english name of variable], variables_api[variable code]
     """
     vars = {}
-    vars_l = ds['variables_n'].split(',')
+    vars_l = ds['variables_i'].split(',')
     length = len(vars_l)
 
-    for item in vars_l:
-       item = item.strip()
-       vars[item] = variable_dict[item]
+    with open('Lookup_Tables/Variable_List.csv','r',newline= '') as vl:
+        var_list = csv.DictReader(vl)
+        for item in vars_l:
+            for row in var_list:
+                if row['Variable'] == item:
+                    code = row['Code']
+                    vars[row['Variable']] = code
     
-    print(vars)
-
-    ds['variables_api'] = vars
+    ds['variables'] = vars
     ds['length'] = length
-
+    print(ds)
 
 def geography(ds):
     """
@@ -99,7 +98,7 @@ def link_creation_tract(ds):
     dataset = '/' + ds['data'] + '/' + ds['acs_type']
     g = '?get='
 
-    for value in ds['variables_api'].values():
+    for value in ds['variables'].values():
         url_var = url_var + value + ","
     url_var = url_var[0:(len(url_var) - 1)]
 
@@ -120,7 +119,7 @@ def link_creation_zip_code(ds):
     dataset = '/' + ds['data'] + '/' + ds['acs_type']
     g = '?get='
 
-    for value in ds['variables_api'].values():
+    for value in ds['variables'].values():
         url_var = url_var + value + ","
     url_var = url_var[0:(len(url_var) - 1)]
     print(url_var)

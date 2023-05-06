@@ -122,7 +122,7 @@ def GUI_input(ds):
         ds['data'] = data.get()
         ds['acs_type'] = acs_type.get()
         ds['year'] = year.get()
-        ds['variables_n'] = variables_n.get()
+        ds['variables_i'] = variables_n.get()
         ds['state_n'] = state_n.get()
         ds['county_n'] = county_n.get()
         ds['tract'] = tract.get()
