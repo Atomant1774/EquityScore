@@ -16,7 +16,7 @@ IDEAS:
 from tkinter  import *
 
 
-def GUI_input(ds):
+def GUI_input(var_dict,geo_dict):
     # Creating master Tkinter window
     root = Tk()
     root.geometry("300x450")
@@ -118,15 +118,13 @@ def GUI_input(ds):
 
     #Submit Button [b1]
     def callback():
-        ds['gtype'] = v.get()
-        ds['data'] = data.get()
-        ds['acs_type'] = acs_type.get()
-        ds['year'] = year.get()
-        ds['variables_i'] = variables_n.get()
-        ds['state_n'] = state_n.get()
-        ds['county_n'] = county_n.get()
-        ds['tract'] = tract.get()
-        ds['zip_code'] = zip_code.get()
+        geo_dict['gtype'] = v.get()
+        var_dict['year'] = year.get()
+        var_dict['name'] = variables_n.get()
+        geo_dict['state_n'] = state_n.get()
+        geo_dict['county_n'] = county_n.get()
+        geo_dict['tract'] = tract.get()
+        geo_dict['zip_code'] = zip_code.get()
 
         root.quit()
     
@@ -137,9 +135,9 @@ def GUI_input(ds):
     root.mainloop()
     #root.quit()
     root.destroy()
-    return ds
+    return geo_dict,var_dict
 
-def GUI_Result(answer):
+def GUI_Result(answer_GUI):
     #Create new Window
     root2 = Tk()
 
@@ -149,7 +147,7 @@ def GUI_Result(answer):
 
     #Print Result [l11]
     l11 = Label(root2,text="Results:")
-    l12 = Label(root2,text= answer)
+    l12 = Label(root2,text= answer_GUI)
 
     l11.pack()
     l12.pack()

@@ -38,116 +38,120 @@ import csv
 #                                                Functions to pull data from Census                                                               #
 #                                                                                                                                                 #
 #=================================================================================================================================================#
-def data(ds):
+def data(var_dict):
     """
     Creates the part of the URL dealing with what variables are being pulled
 
     Returns dictionary containing: data[specific dataset], acs_type[1 or 5 year estimate], year[data collection year], variables_n[english name of variable], variables_api[variable code]
     """
-    vars = {}
-    vars_l = ds['variables_i'].split(',')
-    length = len(vars_l)
+    vars = []
+    variables = {}
 
-    with open('Lookup_Tables/Variable_List.csv','r',newline= '') as vl:
-        var_list = csv.DictReader(vl)
-        for item in vars_l:
+    vars = var_dict['name'].split(",")
+
+    for name in vars:
+        name = name.strip()
+        with open('Lookup_Tables/Variable_List.csv','r',newline= '') as vl:
+            var_list = csv.DictReader(vl)
             for row in var_list:
-                if row['Variable'] == item:
-                    code = row['Code']
-                    vars[row['Variable']] = code
-    
-    ds['variables'] = vars
-    ds['length'] = length
-    print(ds)
+                list1 = []
+                if row['Variable'] == name:
+                    list1.append(row['Code'])
+                    list1.append(row['Survey'])
+                    variables[name] = list1
 
-def geography(ds):
+    var_dict["variables"] = variables
+    print(variables)
+
+def geography(geo_dict):
     """
     Creates the part of the URL that specifies location of data
 
     Returns dictionary containing: state_n[english state name], state_api[state code], county_n[english county name], county_api[county code], tract[census tract number]
     """
-    with open('EquityScore/Geo_Codes/StateList.csv','r',newline='') as sl:
+    with open('Geo_Codes/StateList.csv','r',newline='') as sl:
         counties_list = csv.DictReader(sl)
         for row in counties_list:
-            if row['State'] ==  ds['state_n']:
+            if row['State'] ==  geo_dict['state_n']:
                 code = row['Code']
-    ds['state_api'] = code
+    geo_dict['state_api'] = code
 
-    county_file = 'EquityScore/Geo_Codes/County_Lists/' + ds['state_api'] + '.csv'
+    county_file = 'Geo_Codes/County_Lists/' + geo_dict['state_api'] + '.csv'
     with open(county_file,'r',newline='') as cl:
         counties_list = csv.DictReader(cl)
         for row in counties_list:
-            if row['County Name'] ==  ds['county_n']:
+            if row['County Name'] ==  geo_dict['county_n']:
                 code = row['Code']
 
-    ds['county_api'] = code.zfill(3)
+    geo_dict['county_api'] = code.zfill(3)
     return
 
 
-def link_creation_tract(ds):
+def link_creation_tract(geo_dict,var_dict,urls):
     """
     Creates the URL from data and geography functions
 
     Returns the URL 
     """
-    url_var = ""
+    for variable in var_dict["variables"]:
+        
+        host = 'https://api.census.gov/data'
+        year = var_dict['year']
+        year = '/' + year
+        survey = var_dict["variables"][variable][1]
+        if survey == 'acs5' or 'acs1':
+            dataset = '/acs/' + survey
+        else:
+            dataset = '/' + survey
+        code = var_dict["variables"][variable][0]
+        g = '?get='
+        f = '&for=tract:'
+        i = '&in=state:'
+        c = '%20county:'
+        key = '&key=c894b42f112755eaca5d3957f0b7b7de6a47b16f'
 
-
-    host = 'https://api.census.gov/data'
-    year = '/' + ds['year']
-    dataset = '/' + ds['data'] + '/' + ds['acs_type']
-    g = '?get='
-
-    for value in ds['variables'].values():
-        url_var = url_var + value + ","
-    url_var = url_var[0:(len(url_var) - 1)]
-
-    f = '&for=tract:'
-    i = '&in=state:'
-    c = '%20county:'
-    key = '&key=c894b42f112755eaca5d3957f0b7b7de6a47b16f'
-
-    url = f"{host}{year}{dataset}{g}{url_var}{f}{ds['tract']}{i}{ds['state_api']}{c}{ds['county_api']}{key}"
-
-    return url
-
-def link_creation_zip_code(ds):
-    url_var = ""
+        url = f"{host}{year}{dataset}{g}{code}{f}{geo_dict['tract']}{i}{geo_dict['state_api']}{c}{geo_dict['county_api']}{key}"
+        urls[variable] = url
     
-    host = 'https://api.census.gov/data'
-    year = '/' + ds['year']
-    dataset = '/' + ds['data'] + '/' + ds['acs_type']
-    g = '?get='
+    print(urls)
+    return urls
 
-    for value in ds['variables'].values():
-        url_var = url_var + value + ","
-    url_var = url_var[0:(len(url_var) - 1)]
-    print(url_var)
-
-    f = '&for=zip%20code%20tabulation%20area:'
-    key = '&key=c894b42f112755eaca5d3957f0b7b7de6a47b16f'
-
-
-    url = f"{host}{year}{dataset}{g}{url_var}{f}{ds['zip_code']}{key}"    
+def link_creation_zip_code(geo_dict,var_dict,urls):
+    for variable in var_dict["variables"]:
+        host = 'https://api.census.gov/data'
+        year = '/' + var_dict['year']
+        survey = var_dict["variables"][variable][1]
+        if survey == 'acs5' or 'acs1':
+            dataset = '/acs/' + survey
+        else:
+            dataset = '/' + survey
+        code = var_dict["variables"][variable][0]
+        g = '?get='
+        f = '&for=zip%20code%20tabulation%20area:'
+        key = '&key=c894b42f112755eaca5d3957f0b7b7de6a47b16f'
+       
+        url = f"{host}{year}{dataset}{g}{code}{f}{geo_dict['zip_code']}{key}"
+        urls[variable] = url 
  
-    print(url)
-    return url
+    print(urls)
+    return urls
     
 
-def data_processing(url,ds):
+def data_processing(urls,var_dict,results):
     """
     Gets data using URL from link_creation function and parses it from JSON into a usable string
 
     Result from query as a string
     """
+    
+    for variable in var_dict["variables"]:
+        data = requests.get(urls[variable])
+        result = data.json()
+        result = result[1]
+        result = result[0]
+        print(result)
+        results[variable] = result
+        print(results)
 
-    data = requests.get(url)
-    result = data.json()
-    result = result[1]
-    print(result)
-    result = result[0:int(ds['length'])]
-
-    ds['result'] = result
-
-    return ds
+    return results
 
