@@ -18,14 +18,6 @@ V1.0 [04-16-2023]
     * Proper formating in functions added
     * Result conversion from JSON to English
 =================================================================================================================================================
-IDEAS:
-    * Add rest of county lists
-    * Support for cities? Metro Areas? Tribal Areas? 
-    * Support for multiple geographies in one search?
-    * 2+ Variable Support
-    * Create output to be sent over to other .py files (for final product)
-    * Change acs type so that its acs + 1 or 5
-=================================================================================================================================================
 """
 
 #Import Statments 
@@ -104,14 +96,23 @@ def link_creation_tract(geo_dict,var_dict,urls):
         else:
             dataset = '/' + survey
         code = var_dict["variables"][variable][0]
-        g = '?get='
-        f = '&for=tract:'
-        i = '&in=state:'
-        c = '%20county:'
-        key = '&key=c894b42f112755eaca5d3957f0b7b7de6a47b16f'
 
-        url = f"{host}{year}{dataset}{g}{code}{f}{geo_dict['tract']}{i}{geo_dict['state_api']}{c}{geo_dict['county_api']}{key}"
-        urls[variable] = url
+        if geo_dict['tract'] == '':
+            g = '?get='
+            c = '&for=county:'
+            s = '&in=state:'
+            key = '&key=c894b42f112755eaca5d3957f0b7b7de6a47b16f'
+            url = f"{host}{year}{dataset}{g}{code}{c}{geo_dict['county_api']}{s}{geo_dict['state_api']}{key}"
+            urls[variable] = url
+
+        else:
+            g = '?get='
+            f = '&for=tract:'
+            i = '&in=state:'
+            c = '%20county:'
+            key = '&key=c894b42f112755eaca5d3957f0b7b7de6a47b16f'
+            url = f"{host}{year}{dataset}{g}{code}{f}{geo_dict['tract']}{i}{geo_dict['state_api']}{c}{geo_dict['county_api']}{key}"
+            urls[variable] = url
     
     print(urls)
     return urls
