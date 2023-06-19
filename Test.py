@@ -1,3 +1,3 @@
-import math
+a = {"a":1,"b":2}
 
-print(list(math.modf(2.5)))
+print(a['a'])
