@@ -1,3 +1,3 @@
-import time
+import math
 
-print(time.time())
+print(list(math.modf(2.5)))
