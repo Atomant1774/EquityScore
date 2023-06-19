@@ -1,5 +1,24 @@
-Factor,Variable,By,Code
-All,Population,,B01001_001E
-Transportation,ANV,All,B08015_001E
-,,Male ,B08015_002E
-,,Female,B08015_003E
+Survey,Factor,Variable,By,Code
+acs5,All,Population,,B01001_001E
+acs5,Economic,Poverty,,B06012_002E
+acs5,Transportation,ANV,All,B08015_001E
+acs5,,,,
+acs5,,,,
+acs5,Social,Age,Under 5,
+acs5,,,5 to 9,
+acs5,,,10 to 14,
+acs5,,,15 to 19,
+acs5,,,20 to 24,
+acs5,,,25 to 29,
+acs5,,,30 to 34,
+acs5,,,35 to 39,
+acs5,,,40 to 44,
+acs5,,,45 to 49,
+acs5,,,50 to 54,
+acs5,,,55 to 59,
+acs5,,,60 to 64,
+acs5,,,65 to 69,
+acs5,,,70 to 74,
+acs5,,,75 to 79,
+acs5,,,80 to 84,
+acs5,,,85 and over,
