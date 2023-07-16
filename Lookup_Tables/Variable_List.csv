@@ -1,7 +1,7 @@
 Survey,Factor,Variable,By,Code
-acs5,All,Population,,B01001_001E
-acs5,Economic,Poverty,,B06012_002E
-acs5,Transportation,ANV,All,B08015_001E
+acs5,All,Population,Population,B01001_001E
+acs5,Economic,Poverty,Poverty,B17021_002E
+acs5,Transportation,ANV,ANV,B08015_001E
 acs5,,,,
 acs5,,,,
 acs5,Social,Age,Under 5,
@@ -22,3 +22,10 @@ acs5,,,70 to 74,
 acs5,,,75 to 79,
 acs5,,,80 to 84,
 acs5,,,85 and over,
+,Social ,Race,White,B02008_001E
+,,,African American,B02009_001E
+,,,American Indian and Alaska Native,B02010_001E
+,,,Asian,B02011_001E
+,,,Native Hawaiian and Other Pacific Islander,B02012_001E
+,,,Other Races,B02013_001E
+,,,Two or More Races,B02014_001E
