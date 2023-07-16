@@ -19,12 +19,13 @@ def GUI_One(GUIDict):
     #inputs / Title Bar
     input = ctk.CTk()
     input.title("Census Data Puller")
-    input.geometry("600x600")
+
 
     #Empty Var
     EstTime = ctk.StringVar()
     FileInput = ctk.StringVar()
     FileOutput = ctk.StringVar()
+    pbLength = 0
 
     #Functions
     def inputfile():
@@ -50,46 +51,48 @@ def GUI_One(GUIDict):
     varset = ctk.StringVar(value= "Basic Demographics")
 
     #VarSetFrame
-    VarSetFrame = ctk.CTkFrame(master = input)
+    VarSetFrame = ctk.CTkFrame(master = input, width= 200)
     Varlabel = ctk.CTkLabel(master= VarSetFrame, text= "Choose Variable Set: ")
     VarDropDown = ctk.CTkOptionMenu(VarSetFrame,values= ["Basic Demographics", "Advanced Demographics", "Travel Data", "Test"], variable= varset)
     #VarSetFrame Packing
-    Varlabel.pack()
-    VarDropDown.pack()
-    VarSetFrame.pack()
+    Varlabel.grid(row = 0, column = 0)
+    VarDropDown.grid(row = 0, column = 1)
+    VarSetFrame.grid(row = 0, column = 0, pady = 50)
 
     #Input File
-    InputFrame = ctk.CTkFrame(master=input)
+    InputFrame = ctk.CTkFrame(master=input, width= 200)
     InputLabel = ctk.CTkLabel(master=InputFrame,text= "Choose Spreadsheet to Open: ")
     InputButton = ctk.CTkButton(master= InputFrame, text= "Input File", command= inputfile)
     InputConfirmation = ctk.CTkLabel(master=InputFrame, textvariable= FileInput)
     #InputFile Packing
-    InputLabel.pack()
-    InputButton.pack()
-    InputConfirmation.pack()
-    InputFrame.pack()
+    InputLabel.grid(row = 0, column = 0, pady = 5)
+    InputButton.grid(row = 0, column = 1, pady = 5)
+    InputConfirmation.grid(row = 1, column = 0, pady = 5)
+    InputFrame.grid(row = 1, column = 0, pady = 50)
 
     #Output File
-    OutputFrame = ctk.CTkFrame(master=input)
+    OutputFrame = ctk.CTkFrame(master=input, width= 200)
     OutputLabel = ctk.CTkLabel(master=OutputFrame,text= "Choose Destination for Data: ")
     OutputButton = ctk.CTkButton(master= OutputFrame, text= "Output File", command= outfile)
     OutputConfirmation = ctk.CTkLabel(master= OutputFrame,textvariable = FileOutput)
     #Output Packing
-    OutputLabel.pack()
-    OutputButton.pack()
-    OutputConfirmation.pack()
-    OutputFrame.pack()
+    OutputLabel.grid(row = 0, column = 0, pady = 5)
+    OutputButton.grid(row = 0, column = 1, pady = 5)
+    OutputConfirmation.grid(row = 1, column = 0, pady = 5)
+    OutputFrame.grid(row = 2, column = 0, pady = 50)
 
     #StartButton
-    StartButtonFrame = ctk.CTkFrame(master=input)
+    StartButtonFrame = ctk.CTkFrame(master=input, width= 200)
+    EstTimeLabel = ctk.CTkLabel(master= StartButtonFrame, text= "Estimated time is: ")
     EstTimeA = ctk.CTkLabel(master= StartButtonFrame, textvariable = EstTime)
     
 
     StartButton = ctk.CTkButton(master=StartButtonFrame, text= "Start", command= Outputs)
     #StartButton Packing
-    EstTimeA.pack()
-    StartButton.pack()
-    StartButtonFrame.pack()
+    EstTimeA.grid(row = 0,column = 1)
+    EstTimeLabel.grid(row = 0, column = 0)
+    StartButton.grid(row = 1,column = 0, padx = 25)
+    StartButtonFrame.grid(row = 3, column = 0, pady = 50)
 
 
     #Mainloop

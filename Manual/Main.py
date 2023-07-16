@@ -12,8 +12,8 @@ IDEAS:
     *
 =================================================================================================================================================
 """
-import ESGUI as g
-import Census_Data_Puller as cdp
+import Manual.ESGUI as g
+import Manual.Census_Data_Puller as cdp
 
 
 #Main var storage

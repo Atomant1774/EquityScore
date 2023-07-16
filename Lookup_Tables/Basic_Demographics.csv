@@ -1,0 +1,114 @@
+Factor,Variable,By,Code
+All,Population,Population,B01003_001E
+Economic,Poverty,Poverty,B17001_002E
+Social,Sex,Male,B01001_002E
+,,Female,B01001_026E
+Age,Male,Under 5,B01001_003E
+,,5 to 9,B01001_004E
+,,10 to 14,B01001_005E
+,,15 to 17,B01001_006E
+,,18 to 19,B01001_007E
+,,20,B01001_008E
+,,21,B01001_009E
+,,22 to 24,B01001_010E
+,,25 to 29,B01001_011E
+,,30 to 34,B01001_012E
+,,35 to 39,B01001_013E
+,,40 to 44,B01001_014E
+,,45 to 49,B01001_015E
+,,50 to 54,B01001_016E
+,,55 to 59,B01001_017E
+,,60 to 61,B01001_018E
+,,62 to 64,B01001_019E
+,,65 to 66,B01001_020E
+,,67 to 69,B01001_021E
+,,70 to 74,B01001_022E
+,,75 to 79,B01001_023E
+,,80 to 84,B01001_024E
+,,85 and over,B01001_025E
+,Female,Under 5,B01001_027E
+,,5 to 9,B01001_028E
+,,10 to 14,B01001_029E
+,,15 to 17,B01001_030E
+,,18 to 19,B01001_031E
+,,20,B01001_032E
+,,21,B01001_033E
+,,22 to 24,B01001_034E
+,,25 to 29,B01001_035E
+,,30 to 34,B01001_036E
+,,35 to 39,B01001_037E
+,,40 to 44,B01001_038E
+,,45 to 49,B01001_039E
+,,50 to 54,B01001_040E
+,,55 to 59,B01001_041E
+,,60 to 61,B01001_042E
+,,62 to 64,B01001_043E
+,,65 to 66,B01001_044E
+,,67 to 69,B01001_045E
+,,70 to 74,B01001_046E
+,,75 to 79,B01001_047E
+,,80 to 84,B01001_048E
+,,85 and over,B01001_049E
+,,Median,B01002_002E
+Social ,Race,White,B02008_001E
+,,African American,B02009_001E
+,,American Indian and Alaska Native,B02010_001E
+,,Asian,B02011_001E
+,,Native Hawaiian and Other Pacific Islander,B02012_001E
+,,Other Races,B02013_001E
+,,Two or More Races,B02014_001E
+Social ,Ethnicity,Hispanic or Latino,B03002_012E
+Social ,Citizenship,US Citizen,B05001_002E
+,,From Puerto Rico or US Island Areas,B05001_003E
+,,US Citizen by Naturalization,B05001_005E
+,,Not a US Citizen,B05001_006E
+Transportation,Vehicle Ownership,0 Cars,B08014_002E
+,,1 Car,B08014_003E
+,,2 Cars,B08014_004E
+,,3 Cars,B08014_005E
+,,4 Cars,B08014_006E
+,,5 or more cars,B08014_007E
+Education,,No schooling,B15003_002E
+,,Nursery School,B15003_003E
+,,1st Grade,B15003_004E
+,,2nd Grade,B15003_005E
+,,3rd Grade,B15003_006E
+,,4th Grade,B15003_007E
+,,5th Grade,B15003_008E
+,,6th Grade,B15003_009E
+,,7th Grade,B15003_010E
+,,8th Grade,B15003_011E
+,,9th Grade,B15003_012E
+,,10th Grade,B15003_013E
+,,11th Grade,B15003_014E
+,,12th Grade,B15003_015E
+,,"12th Grade, no diploma",B15003_016E
+,,Regular High School Diploma,B15003_017E
+,,GED,B15003_018E
+,,Less than 1 year of college,B15003_019E
+,,"Some College more than 1 year, no degree",B15003_020E
+,,Associates degree,B15003_021E
+,,Bachelor's degree,B15003_022E
+,,Master's degree,B15003_023E
+,,Professional Degree,B15003_024E
+,,Doctorate Degree,B15003_025E
+Social,Language,Only English,B16001_002E
+,,Speak Spanish,B16001_003E
+Income,,"<$10,000",B19001_002E
+,,"$10,000 to $14,999",B19001_003E
+,,"$15,000 to $19,999",B19001_004E
+,,"$20,000 to $24,999",B19001_005E
+,,"$25,000 to $29,999",B19001_006E
+,,"$30,000 to $34,999",B19001_007E
+,,"$35,000 to $39,999",B19001_008E
+,,"$40,000 to $44,999",B19001_009E
+,,"$45,000 to $49,999",B19001_010E
+,,"$50,000 to $59,999",B19001_011E
+,,"$60,000 to $74,999",B19001_012E
+,,"$75,000 to $99,999",B19001_013E
+,,"$100,000 to $124,999",B19001_014E
+, ,"$125,000 to $149,999",B19001_015E
+,,"$150,000 to $199,999",B19001_016E
+,,">$200,000",B19001_017E
+Income,,Median,B19119_001E
+Social,,Vetern Status,B21001_002E

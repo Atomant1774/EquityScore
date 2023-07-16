@@ -1,6 +1,6 @@
 Survey,Factor,Variable,By,Code
 acs5,All,Population,Population,B01001_001E
-acs5,Economic,Poverty,Poverty,B06012_002E
+acs5,Economic,Poverty,Poverty,B17021_002E
 acs5,Transportation,ANV,ANV,B08015_001E
 acs5,,,,
 acs5,,,,
